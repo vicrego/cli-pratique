@@ -76,107 +76,57 @@ public class Main {
                     case 2:
                         System.out.println(listaDeEventos.toString());
                         Boolean repetirParticipar = true;
-                        Boolean testo = false;
                         while(repetirParticipar){
                             System.out.println("Insira o número do evento para participar. Pressione 'N' para voltar ao menu principal.");
                             String numEvento = dd.nextLine();
                             if(!numEvento.equalsIgnoreCase("N")){
                                 //Loops inside ListaDeEventos
                                 for(int i = 0; i < ListaDeEventos.listaDeEventos.size(); i++){
-                                    //Checks if eventosParticipados has any item. 
-                                    //If it has, check if usuario and listaDeEventos are different. 
-                                    /*if((Usuario.eventosParticipados.size() > 0) ? ( Integer.parseInt(numEvento) != ListaDeEventos.listaDeEventos.get(i).numeroEvento) : true){
-                                        //If user's input is equal to the event's number, Usuario has event added 
-                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {  
-                                            Usuario.participarEvento(ListaDeEventos.listaDeEventos.get(i));
-                                            System.out.println("Evento adicionado com sucesso.");                                            
-                                            repetirParticipar = false;
-                                        } else {
-                                            System.out.println("Evento não existente. Insira um número válido.");
-                                            //System.out.println("Number from listaDeEventos and Usuario.eventoparticipados are the same.");
-                                            repetirParticipar = true;
-                                            //testo = true;
-                                        }
-
-
-                                    
-                                    } else {
-                                        System.out.println("Insira um número válido.");
-                                        repetirParticipar = true;
-                                    }*/
-                                    Boolean eventAdded = false;
-                                    if(Usuario.eventosParticipados.size() > 0) {                                       
+                                    //Checks if Usuario is participating in any event
+                                    if(Usuario.eventosParticipados.size() > 0 && Integer.parseInt(numEvento) <= ListaDeEventos.listaDeEventos.size()) {        
+                                        //Checks if iterator is less than the number of Usuario.eventosParticipados.
+                                        //If so, event will add if Usuario.numeroEvento is different than ListaDeEventos.numeroEvento.  
                                         if(i + 1 <= Usuario.eventosParticipados.size() ? (Usuario.eventosParticipados.get(i).numeroEvento != ListaDeEventos.listaDeEventos.get(i).numeroEvento) : true){
+                                            //ListaDeEvento.numeroEvento that has the same value as user's choice will be added
                                             if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {  
-                                                
                                                 Usuario.participarEvento(ListaDeEventos.listaDeEventos.get(i));
-                                                System.out.println("Evento adicionado com sucesso.");
-                                                eventAdded = true;                                            
+                                                System.out.println("Evento adicionado com sucesso.");                                        
                                                 repetirParticipar = false;
                                                 break;
                                             } else {
+                                                //ListaDeEvento.numeroEvento that doesn't have the same value as User's Choice repeats process
                                                 System.out.println(ListaDeEventos.listaDeEventos.get(i).numeroEvento);
-                                            
                                                 System.out.println("Evento não existente. Insira um número válido.");
                                                 repetirParticipar = true;
                                                 //testo = true;
                                             }
-                                        } else {
-                                            
-                                            System.out.println("Evento repetido. Insira um número válido.");
-                                            repetirParticipar = true;
-                                            //testo = true;
-                                            //break;
-                                            
+                                        //Usuario.numeroEvento that's equal to ListaDeEventos.numero repeats process
+                                        } else if (Usuario.eventosParticipados.get(i).numeroEvento == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {
+                                            //User's choice that is equal to ListaDeEventos.numero will have "Repeat" message displayed
+                                            if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) { 
+                                                System.out.println("Evento repetido. Insira um número válido.");
+                                            } /*else if((Integer.parseInt(numEvento)) > ListaDeEventos.listaDeEventos.size()){
+                                                System.out.println("Número for do escopo.");
+                                            }*/;
+                                            repetirParticipar = true;                                            
                                         }
                                     } else {
-                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {  
-                                                
+                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {          
                                             Usuario.participarEvento(ListaDeEventos.listaDeEventos.get(i));
                                             System.out.println("Evento adicionado com sucesso.");                                            
                                             repetirParticipar = false;
                                             break;
                                         } else {
                                             System.out.println(ListaDeEventos.listaDeEventos.get(i).numeroEvento);
-                                        
                                             System.out.println("Evento não existente. Insira um número válido.");
-                                            //System.out.println("Number from listaDeEventos and Usuario.eventoparticipados are the same.");
                                             repetirParticipar = true;
-                                            //testo = true;
                                         }
-                                    }
-                                    
-                                    
-                                    /* 
-                                    ? ( Integer.parseInt(numEvento) != ListaDeEventos.listaDeEventos.get(i).numeroEvento) : true){
-                                        //If user's input is equal to the event's number, Usuario has event added 
-                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {  
-                                            Usuario.participarEvento(ListaDeEventos.listaDeEventos.get(i));
-                                            System.out.println("Evento adicionado com sucesso.");                                            
-                                            repetirParticipar = false;
-                                        } else {
-                                            System.out.println("Evento não existente. Insira um número válido.");
-                                            //System.out.println("Number from listaDeEventos and Usuario.eventoparticipados are the same.");
-                                            repetirParticipar = true;
-                                            //testo = true;
-                                        }
-
-
-                                    
-                                    } else {
-                                        System.out.println("Insira um número válido.");
-                                        repetirParticipar = true;
-                                    }
-                                        */
+                                    }   
                                 } 
                             } else {
                                 System.out.println("Insira um número válido.");
                                 repetirParticipar = false;
                             }
-                            /* 
-                            if(testo){
-                                System.out.println("Insira um número válido 2.");
-                            }*/
                         }     
                     break;
                     
