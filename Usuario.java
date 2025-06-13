@@ -19,6 +19,11 @@ public class Usuario{
         eventosParticipados.add(evento);
     };
 
+    public static void adicionarEvento(Integer i){
+        Usuario.participarEvento(ListaDeEventos.listaDeEventos.get(i));
+        System.out.println("Evento adicionado com sucesso.");   
+    };
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
