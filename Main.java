@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Main {
@@ -74,29 +75,21 @@ public class Main {
                                 for(Integer i = 0; i < ListaDeEventos.listaDeEventos.size(); i++){
                                     //Checks if Usuario is participating in any event and if the User's choice is less than ListaDeEventos size 
                                     if(Integer.parseInt(numEvento) <= ListaDeEventos.listaDeEventos.size()){
-                                        if(Usuario.eventosParticipados.size() > 0) {        
-                                            //Checks if iterator is less than the number of Usuario.eventosParticipados.
-                                            //If so, event will add if Usuario.numeroEvento is different than ListaDeEventos.numeroEvento.  
-                                            if(i + 1 <= Usuario.eventosParticipados.size() ? (Usuario.eventosParticipados.get(i).numeroEvento != ListaDeEventos.listaDeEventos.get(i).numeroEvento) : true){
-                                                System.out.println("Usuarios num: " + Usuario.eventosParticipados.get(i).numeroEvento);
-                                                System.out.println("Lista num: " + ListaDeEventos.listaDeEventos.get(i).numeroEvento);
-                                                
-                                                //ListaDeEvento.numeroEvento that has the same value as user's choice will be added
-                                                if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {  
-                                                    Usuario.adicionarEvento(i);                                        
-                                                    repetirParticipar = false;
+                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento){      
+                                            if(Usuario.eventosParticipados.size() > 0) {    
+                                                //Checks inside Usuario.eventos if the number chosen by user already doesn't exist
+                                                //If doesn't exist, it adds event to user
+                                                //If exists, repeated event message is displayed
+                                                if(Usuario.eventosParticipados.stream().noneMatch(e -> 
+                                                    e.numeroEvento == Integer.parseInt(numEvento))){
+                                                        Usuario.adicionarEvento(i);                                   
+                                                        repetirParticipar = false;
+                                                        break;
+                                                } else {
+                                                    System.out.println("Evento repetido. Insira um número válido. 1");
                                                     break;
-                                                }; 
-                                            //Usuario.numeroEvento that's equal to ListaDeEventos.numero repeats loop
-                                            } else if (Usuario.eventosParticipados.get(i).numeroEvento == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {
-                                                //User's choice that is equal to ListaDeEventos.numero will have "Repeat" message displayed
-                                                if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) { 
-                                                    System.out.println("Evento repetido. Insira um número válido.");
-                                                    break;
-                                                };                                           
-                                            }
-                                        } else {
-                                            if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento) {          
+                                                }
+                                            } else {
                                                 Usuario.adicionarEvento(i);                                                                       
                                                 repetirParticipar = false;
                                                 break;
@@ -104,7 +97,7 @@ public class Main {
                                         } 
                                     }   else {
                                         System.out.println(ListaDeEventos.listaDeEventos.get(i).numeroEvento);
-                                        System.out.println("Evento não existente. Insira um número válido.");
+                                        System.out.println("Evento não existente. Insira um número válido. 2");
                                         break;
                                     }
                                 } 

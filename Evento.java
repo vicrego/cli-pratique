@@ -2,8 +2,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
+
 public class Evento{
-    Integer numeroEvento;
+    int numeroEvento;
     String nome;
     String endereco;
     String categoria;
@@ -18,12 +19,4 @@ public class Evento{
     public Evento(){
 
     }
-
-
-
-    /*
-    public String adicionarParticipante(usuario){
-        return "test";
-    }
-    */
 }
