@@ -1,6 +1,10 @@
 
 import java.util.Scanner;
 
+import Controller.EventoController;
+import Model.ListaDeEventos;
+import Model.Usuario;
+
 public class Main {
     public static void main(String[] args){
         try (Scanner dd = new Scanner(System.in)) {
@@ -17,27 +21,26 @@ public class Main {
             while(repetirEventoAdd){
                 
                 System.out.println("Selecione uma das opções abaixo:");
-                System.out.println("1 - Adicionar evento.");
-                System.out.println("2 - Exibir todos os eventos.");
-                System.out.println("3 - Exibir eventos participados.");
-                System.out.println("4 - Sair.");                
+                System.out.println("1. Adicionar evento.");
+                System.out.println("2. Exibir todos os eventos.");
+                System.out.println("3. Exibir eventos participados.");
+                System.out.println("4. Sair.");                
                 int escolhaDetalhesEvento = dd.nextInt();
                 
                 dd.nextLine();
                 switch(escolhaDetalhesEvento) {
                     case 1:
-                        System.out.println("Insira um nome para o evento.");
+                        System.out.println("Insira um nome para o evento:");
                         String nomeEvento = dd.nextLine();
-                        System.out.println("Insira um endereço.");
+                        System.out.println("Insira um endereço:");
                         String endereco = dd.nextLine();
+                        System.out.println("Insira uma categoria abaixo:");
                         String categoria = "";
                         Boolean repetirCategoria = true;
                         while(repetirCategoria){
-                            System.out.println("Insira uma categoria abaixo.");
-                            System.out.println("1 - Festa.");
-                            System.out.println("2 - Evento esportivo.");
-                            System.out.println("3 - Show.");
-                            
+                            System.out.println("1. Festa.");
+                            System.out.println("2. Evento esportivo.");
+                            System.out.println("3. Show.");
                             int escolhaCategoria = dd.nextInt();
                             dd.nextLine(); 
                             switch(escolhaCategoria){
@@ -60,8 +63,7 @@ public class Main {
                                     break;
                             }
                         }
-                        Evento evento = new Evento(nomeEvento, endereco, categoria);
-                        ListaDeEventos.adicionarEventos(evento);
+                        EventoController.criarEvento(nomeEvento, endereco, categoria);
                         System.out.println(listaDeEventos.toString());
                         break;
                     case 2:
@@ -71,40 +73,11 @@ public class Main {
                             System.out.println("Insira o número do evento para participar. Pressione 'N' para voltar ao menu principal.");
                             String numEvento = dd.nextLine();
                             if(!numEvento.equalsIgnoreCase("N")){
-                                //Loops inside ListaDeEventos
-                                for(Integer i = 0; i < ListaDeEventos.listaDeEventos.size(); i++){
-                                    //Checks if Usuario is participating in any event and if the User's choice is less than ListaDeEventos size 
-                                    if(Integer.parseInt(numEvento) <= ListaDeEventos.listaDeEventos.size()){
-                                        if(Integer.parseInt(numEvento) == ListaDeEventos.listaDeEventos.get(i).numeroEvento){      
-                                            if(Usuario.eventosParticipados.size() > 0) {    
-                                                //Checks inside Usuario.eventos if the number chosen by user already doesn't exist
-                                                //If doesn't exist, it adds event to user
-                                                //If exists, repeated event message is displayed
-                                                if(Usuario.eventosParticipados.stream().noneMatch(e -> 
-                                                    e.numeroEvento == Integer.parseInt(numEvento))){
-                                                        Usuario.adicionarEvento(i);                                   
-                                                        repetirParticipar = false;
-                                                        break;
-                                                } else {
-                                                    System.out.println("Evento repetido. Insira um número válido. 1");
-                                                    break;
-                                                }
-                                            } else {
-                                                Usuario.adicionarEvento(i);                                                                       
-                                                repetirParticipar = false;
-                                                break;
-                                            }
-                                        } 
-                                    }   else {
-                                        System.out.println(ListaDeEventos.listaDeEventos.get(i).numeroEvento);
-                                        System.out.println("Evento não existente. Insira um número válido. 2");
-                                        break;
-                                    }
-                                } 
+                                EventoController.adicionarEventoUsuario(repetirParticipar, numEvento);
                             } else {
                                 System.out.println("Insira um número válido.");
                                 repetirParticipar = false;
-                            }
+                            }                        
                         }     
                     break;
                     

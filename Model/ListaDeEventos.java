@@ -1,9 +1,9 @@
-
+package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-class ListaDeEventos {
-    static List<Evento> listaDeEventos = new ArrayList<Evento>();
+public class ListaDeEventos {
+    public static List<Evento> listaDeEventos = new ArrayList<Evento>();
     //String numeroEvento;
 
 

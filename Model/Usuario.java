@@ -1,3 +1,4 @@
+package Model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,15 +7,13 @@ public class Usuario{
     String nome;
     String sobrenome;
     String telefone;
-    static List<Evento> eventosParticipados = new ArrayList<Evento>();   
+    public static List<Evento> eventosParticipados = new ArrayList<Evento>();   
 
     public Usuario(String nome, String sobrenome, String telefone){
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
     }
-    
-
     public static void participarEvento(Evento evento){
         eventosParticipados.add(evento);
     };
@@ -39,14 +38,4 @@ public class Usuario{
         }
         return sb.toString();
     }
-
-
-    /*
-    List<Evento> exibirEventos(nome){
-
-    }
-    List<Evento> exibirEventosParticipados(evento){
-
-    }
-    */
 }
