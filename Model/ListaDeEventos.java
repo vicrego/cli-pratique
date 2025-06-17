@@ -20,7 +20,9 @@ public class ListaDeEventos {
                 sb.append(
                     '\n' + "Número do Evento: " + listaDeEventos.get(i).numeroEvento + '\n' +
                     "Nome: " + listaDeEventos.get(i).nome + '\n' +
-                    "Endereço: " + listaDeEventos.get(i).endereco + '\n'
+                    "Endereço: " + listaDeEventos.get(i).endereco + '\n' + 
+                    "Descrição: " + listaDeEventos.get(i).descricao + '\n' +
+                    "Data: " + listaDeEventos.get(i).horario + '\n'
                 );
             };
         } else {

@@ -30,7 +30,9 @@ public class Usuario{
             for(int i = 0; i < eventosParticipados.size(); i++){
                 sb.append(
                     "Nome: " + eventosParticipados.get(i).nome + '\n' +
-                    "Endereço: " + eventosParticipados.get(i).endereco + '\n'
+                    "Endereço: " + eventosParticipados.get(i).endereco + '\n' +
+                    "Descrição: " + eventosParticipados.get(i).descricao + '\n' +
+                    "Data: " + eventosParticipados.get(i).horario + '\n'
                 );
             };
         } else {

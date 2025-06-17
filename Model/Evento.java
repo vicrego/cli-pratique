@@ -1,4 +1,5 @@
 package Model;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,13 +9,15 @@ public class Evento{
     String nome;
     String endereco;
     String categoria;
-    LocalDateTime horario;
+    String horario;
     String descricao;
     List<Usuario> usuarios;
-    public Evento(String nome, String endereco, String categoria ){
+    public Evento(String nome, String endereco, String categoria, String horario, String descricao){
         this.nome = nome;
         this.endereco = endereco;
         this.categoria = categoria;
+        this.horario = horario;
+        this.descricao = descricao;
     } 
     public Evento(){
 
