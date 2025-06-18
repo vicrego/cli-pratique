@@ -14,11 +14,11 @@ import Model.Usuario;
 public class Main {
     public static void main(String[] args){
         try (Scanner scan = new Scanner(System.in)) {
-            System.out.println("Crie um usuário. Primeiro insira um nome.");
+            System.out.print("Crie um usuário. Primeiro insira um nome: ");
             String nome = scan.nextLine();
-            System.out.println("Insira o seu sobrenome.");
+            System.out.print("Insira o seu sobrenome: ");
             String sobrenome = scan.nextLine();
-            System.out.println("Insira o seu telefone.");
+            System.out.print("Insira o seu telefone: ");
             String telefone = scan.nextLine();
             Usuario usuario = new Usuario(nome, sobrenome, telefone);
             ListaDeEventos listaDeEventos = new ListaDeEventos();
@@ -34,11 +34,11 @@ public class Main {
                 scan.nextLine(); 
                 switch(escolhaDetalhesEvento) {
                     case 1:
-                        System.out.println("Insira um nome para o evento:");
+                        System.out.print("Insira um nome para o evento: ");
                         String nomeEvento = scan.nextLine();
-                        System.out.println("Insira um endereço:");
+                        System.out.print("Insira um endereço: ");
                         String endereco = scan.nextLine();
-                        System.out.println("Insira uma categoria abaixo:");
+                        System.out.println("Escolha uma das categoria abaixo: ");
                         String categoria = "";
                         Boolean repetirCategoria = true;
                         while(repetirCategoria){
@@ -67,7 +67,7 @@ public class Main {
                                     break;
                             }
                         }
-                        
+
                         System.out.print("Insira uma descrição: ");
                         String descricao = scan.nextLine();
 
@@ -106,7 +106,7 @@ public class Main {
                         break;
 
                     case 4:
-                        System.out.println("\n Tem certeza que deseja sair do programa? Y or N.");
+                        System.out.print("\n Tem certeza que deseja sair do programa? Y or N: ");
                         String continuar = scan.nextLine();
                         if(continuar.equalsIgnoreCase("Y")){
                             System.out.println("Obrigado por utilizar o aplicativo. Tenha um bom dia.");
